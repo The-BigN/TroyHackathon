@@ -91,6 +91,7 @@ public class HelloApplication extends Application {
                     }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
+                //skrrrt
             }
 
 
