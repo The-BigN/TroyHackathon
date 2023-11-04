@@ -93,7 +93,10 @@ public class HelloApplication extends Application {
                 throw new RuntimeException(e);
                 //skrrrt
             }
-
+            if(!rs.next())
+            {
+                primary.setScene(CreateAccount.account);
+            }
 
         });
     }
