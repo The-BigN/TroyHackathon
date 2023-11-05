@@ -11,17 +11,17 @@ import javafx.scene.paint.Paint;
 
 public class ListOfPatients
 {
-    public static Label[] labels = new Label[28];
+    public static Label[] labels = new Label[32];
     public static Button[] buttons=new Button[8];
     public static Scene listOfPatients() {
         GridPane list=new GridPane();
-        for (int i = 0; i < 28; i++)
+        for (int i = 0; i < 32; i++)
         {
         labels[i]=new Label("_");
         labels[i].setTextFill(Color.rgb(255,255,255));
         }
         int l=0;
-        for(int j=0; j<7;j++)
+        for(int j=0; j<8;j++)
             for (int k=0; k<4;k++) {
                 list.add(labels[l],j,k);
                 l++;
@@ -30,14 +30,14 @@ public class ListOfPatients
         {
             buttons[i]=new Button("skee");
         }
-        list.add(buttons[0],8,0);
-        list.add(buttons[1],9,0);
-        list.add(buttons[2],8,1);
-        list.add(buttons[3],9,1);
-        list.add(buttons[4],8,2);
-        list.add(buttons[5],9,2);
-        list.add(buttons[6],8,3);
-        list.add(buttons[7],9,3);
+        list.add(buttons[0],9,0);
+        list.add(buttons[1],10,0);
+        list.add(buttons[2],9,1);
+        list.add(buttons[3],10,1);
+        list.add(buttons[4],9,2);
+        list.add(buttons[5],10,2);
+        list.add(buttons[6],9,3);
+        list.add(buttons[7],10,3);
 
         list.setVgap(15);
         list.setHgap(10);
