@@ -17,7 +17,7 @@ import java.net.ConnectException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primary) throws IOException, SQLException {
-        Connection connection=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Connor\\Desktop\\SecureSoftwareDevelp\\nutrition-calculator-3\\LoginandPatientDatabase.db");
+        Connection connection=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Connor\\Desktop\\TroyHackathon\\LoginandPatientDatabase.db");
         if(connection!=null) {
             System.out.println("Connection was made");
         }
@@ -87,17 +87,12 @@ public class HelloApplication extends Application {
             try {
                 if(rs.next())
                     {
-                        primary.setScene(PatientPage.patientPage);
+                        primary.setScene(ListOfPatients.listOfPatients());
                     }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
                 //skrrrt
             }
-            if(!rs.next())
-            {
-                primary.setScene(CreateAccount.account);
-            }
-
         });
     }
 
