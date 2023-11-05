@@ -1,1 +1,28 @@
+import java.util.Scanner;
 
+public class DepressionDetector {
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Finding signs of depression:");
+            System.out.println("How are feeling today?");
+            String sentence = keyboard.nextLine();
+            sentence = sentence.toLowerCase();
+
+            boolean foundDepression = false;
+            if (sentence.matches(".*\\bsad\\b.*")
+            || sentence.matches(".*\\bupset\\b.*")
+                || sentence.matches(".*\\bsuicide\\b.*")
+             || sentence.matches(".*\\bangry\\b.*")
+             || sentence.matches(".*\\bhate\\b.*")
+            || sentence.matches(".*\\bdisgust\\b.*")){
+                foundDepression=true;
+            }
+            if (foundDepression){
+                System.out.println("This patient shows signs of depression and must be treated!");
+            }
+            else {
+                System.out.println("This patient shows no sign of depression and is clear to go!");
+            }
+
+        }
+    }
