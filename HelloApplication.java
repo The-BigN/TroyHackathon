@@ -89,6 +89,7 @@ public class HelloApplication extends Application {
             try {
                 if(rs.next())
                     {
+                        primary.setTitle("Patient Page");
                         primary.setScene(PatientPage.patientPage);
                     }
             } catch (SQLException e) {
@@ -98,6 +99,7 @@ public class HelloApplication extends Application {
             try {
                 if(!rs.next())
                 {
+                    primary.setTitle("Create Account");
                     primary.setScene(CreateAccount.account);
                 }
             } catch (SQLException e) {
@@ -165,7 +167,89 @@ public class HelloApplication extends Application {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                primary.setTitle("Login");
+                primary.setScene(LoginScene.LogIn);
+                Label userIDLable3= new Label ("User ID:");
+                userIDLable3.setTextFill(Color.rgb(255,255,255));
+                TextField userIDText3=new TextField();
+                HBox hb5=new HBox();
+                hb5.getChildren().addAll(userIDLable3,userIDText3);
+                hb5.setSpacing(15);
+                hb5.setLayoutX(108);
+                hb5.setLayoutY(325);
+
+
+                Label passwordLabel3=new Label ("Password");
+                passwordLabel3.setTextFill(Color.rgb(255,255,255));
+                TextField userPassText3=new TextField();
+                HBox hb6=new HBox();
+                hb6.getChildren().addAll(passwordLabel3,userPassText3);
+                hb6.setSpacing(15);
+                hb6.setLayoutX(100);
+                hb6.setLayoutY(360);
+
+                Button loginButton2=new Button("Login");
+                loginButton2.setTextFill(Color.rgb(0,0,0));
+                loginButton2.setLayoutX(330);
+                loginButton2.setLayoutY(345);
+                Group login2=new Group(hb5,hb6,loginButton);
+                Scene loginScene2=new Scene(login2, 500,750, Color.rgb(56,29,82));
+                primary.setScene(loginScene2);
+                primary.show();
+
+                loginButton.setOnAction(event2 -> {
+                    String userID2=userIDText.getText();
+                    String password2=userPassText.getText();
+                    String query2="Select * from Users where userID=? and password=?";
+                    PreparedStatement pt2= null;
+
+                    try {
+                        pt2 = connection.prepareStatement(query2);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    try {
+                        pt2.setString(1,userID2);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    try {
+                        pt2.setString(2,password2);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    ResultSet rs= null;
+                    try {
+                        rs = pt2.executeQuery();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        if(rs.next())
+                        {
+                            primary.setTitle("Patient Page");
+                            primary.setScene(PatientPage.patientPage);
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                        //skrrrt
+                    }
+                    try {
+                        if(!rs.next())
+                        {
+                            primary.setTitle("Create Account");
+                            primary.setScene(CreateAccount.account);
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                });
             });
+
         });
 
     }
